@@ -3,13 +3,6 @@ use tokio::time::{delay_until, Instant};
 use tokio::runtime::Builder;
 
 fn main() {
-    unsafe {
-        winapi::um::processthreadsapi::SetPriorityClass(
-            winapi::um::processthreadsapi::GetCurrentProcess(),
-            winapi::um::winbase::REALTIME_PRIORITY_CLASS,
-        );
-    }
-
     let mut rt = Builder::new().enable_all().build().unwrap();
 
     rt.block_on(async {
